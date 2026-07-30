@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>own calculator</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+        <script>
+            function addOperation(operation) {
+                document.getElementById('resultArea').innerHTML +=operation;
+            }
+
+            function calculateResult() {
+                let container = document.getElementById('resultArea');
+                let result = eval(container.innerHTML);
+                container.innerHTML = result;
+            }
+
+            function deleteAll() {
+                let container = document.getElementById('resultArea');
+                container.innerHTML = '';
+            }
+
+            function deleteLast() {
+                let container = document.getElementById('resultArea');
+                if (container.innerHTML.endsWith(' ')) {
+                    container.innerHTML = container.innerHTML.slice(0, -3);
+                } else {
+                    container.innerHTML = container.innerHTML.slice(0, -1);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="resultArea"></div>
+        <table>
+            <tr>
+                <td onclick="deleteAll()" class="delete">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                    </svg>
+                </td>
+                <td onclick="addOperation(' ^ ')" class="highlight">^</td>
+                <td onclick="addOperation(' % ')" class="highlight">%</td>
+                <td onclick="addOperation(' / ')" class="highlight">/</td>
+            </tr>
+            <tr>
+                <td onclick="addOperation(7)">7</td>
+                <td onclick="addOperation(8)">8</td>
+                <td onclick="addOperation(9)">9</td>
+                <td onclick="addOperation(' * ')" class="highlight">x</td>
+            </tr>
+            <tr>
+                <td onclick="addOperation(4)">4</td>
+                <td onclick="addOperation(5)">5</td>
+                <td onclick="addOperation(6)">6</td>
+                <td onclick="addOperation(' + ')" class="highlight">+</td>
+            </tr>
+            <tr>
+                <td onclick="addOperation(1)">1</td>
+                <td onclick="addOperation(2)">2</td>
+                <td onclick="addOperation(3)">3</td>
+                <td onclick="addOperation(' - ')" class="highlight">-</td>
+            </tr>
+            <tr>
+                <td onclick="addOperation(0)">0</td>
+                <td onclick="addOperation('.')">,</td>
+                <td onclick="deleteLast()" class="delete">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-backspace-fill" viewBox="0 0 16 16">
+                        <path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
+                    </svg>
+                </td>
+                <td onclick="calculateResult()" id="result">=</td>
+            </tr>
+        </table>
+    </body>
+</html>
