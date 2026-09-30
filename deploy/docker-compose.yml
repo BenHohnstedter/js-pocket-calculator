@@ -1,0 +1,14 @@
+name: js-pocket-calculator
+
+services:
+  js-pocket-calculator:
+    image: php:8.2-apache
+    container_name: js-pocket-calculator
+    restart: unless-stopped
+    volumes:
+      - ..:/var/www/html:ro
+    ports:
+      - "8082:80"
+    labels:
+      - "homelab.project=js-pocket-calculator"
+      - "homelab.port=8082"
